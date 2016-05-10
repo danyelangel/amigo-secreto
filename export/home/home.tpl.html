@@ -1,0 +1,20 @@
+<div layout="column" ng-cloak>
+  <md-toolbar md-scroll-shrink>
+    <div class="md-toolbar-tools">
+      <h3 flex>
+        <span>Amigo Secreto</span>
+      </h3>
+    </div>
+  </md-toolbar>
+  <md-content flex layout-padding style="overflow:scrollY;">
+    <login-card name="home.name" logged-in="home.loggedIn"></login-card>
+    <my-profile name="home.name" logged-in="home.loggedIn"></my-profile>
+    <my-secret-santa user-name="home.name" logged-in="home.loggedIn"></my-secret-santa>
+    <all-players></all-players>
+    <md-card ng-show="home.loggedIn">
+      <div class="md-actions" layout="row" layout-align="start center">
+        <md-button class="md-warn" ng-click="home.deleteAccount()">Borrar cuenta</md-button>
+      </div>
+    </md-card>
+  </md-content>
+</div>

@@ -1,0 +1,101 @@
+<section>
+  <md-subheader layout-fill ng-hide="loginCard.enabled">Hola {{loginCard.name}}</md-subheader>
+  <md-card ng-hide="loginCard.enabled">
+    <div class="md-actions" layout="row" layout-align="end center">
+      <md-button ng-click="loginCard.changePassword()" ng-disabled="loginCard.view5">Cambiar Contrase&ntilde;a</md-button>
+      <md-button class="md-primary" ng-click="loginCard.logout()">Cerrar sesi&oacute;n</md-button>
+    </div>
+  </md-card>
+  <md-subheader class="md-primary" layout-fill ng-show="loginCard.enabled">Iniciar Sesi&oacute;n</md-subheader>
+  <md-card ng-show="loginCard.view1">
+    <md-card-content>
+      <h2 class="md-title">¿Cuál es tu nombre?</h2>
+      <br>
+      <form ng-submit="loginCard.nameInput()">
+        <md-input-container>
+          <label>Nombre o apodo</label>
+          <md-select ng-model="loginCard.name">
+              <md-option ng-value="user.name" ng-repeat="user in loginCard.users">{{user.name}}</md-option>
+          </md-select>
+        </md-input-container>
+      </form>
+    </md-card-content>
+    <div class="md-actions" layout="row" layout-align="end center">
+      <md-button class="md-primary" ng-click="loginCard.nameInput()" ng-disabled="loginCard.loading">Continuar</md-button>
+    </div>
+  </md-card>
+
+  <md-card ng-show="loginCard.view2">
+    <md-card-content>
+      <h2 class="md-title">¿Eres realmente {{loginCard.name}}?</h2>
+      <p>
+        Si contin&uacute;as, nadie m&aacute;s podr&aacute; editar los deseos de {{loginCard.name}} ni conocer su amigo secreto.
+      </p>
+    </md-card-content>
+    <div class="md-actions" layout="row" layout-align="end center">
+      <md-button ng-click="loginCard.cancel()">Cancelar</md-button>
+      <md-button ng-click="loginCard.proceed()" class="md-primary" ng-disabled="loginCard.loading">Sí, soy yo</md-button>
+    </div>
+  </md-card>
+
+  <md-card ng-show="loginCard.view3">
+    <md-card-content>
+      <h2 class="md-title">Introducir santo y seña</h2>
+      <br>
+      <form ng-submit="loginCard.login()">
+        <md-input-container>
+          <label>Contrase&ntilde;a</label>
+          <input type="password" ng-model="loginCard.password">
+        </md-input-container>
+        <span ng-show="loginCard.wrongPasswordError" class="md-caption" style="color:#F44336
+">* Contrase&ntilde;a incorrecta.</span>
+      </form>
+    </md-card-content>
+    <div class="md-actions" layout="row" layout-align="end center">
+      <md-button ng-click="loginCard.cancel()">Cancelar</md-button>
+      <md-button ng-click="loginCard.login()" class="md-primary" ng-disabled="loginCard.loading">Continuar</md-button>
+    </div>
+  </md-card>
+
+  <md-card ng-show="loginCard.view4">
+    <md-card-content>
+      <h2 class="md-title">Bienvenido(a) {{loginCard.name}}</h2>
+      <p>&Eacute;sta es tu nueva contrase&ntilde;a. La necesitar&aacute;s para volver a ingresar.</p>
+      <h3 class="md-display-1 md-primary" style="text-align:center;">{{loginCard.suggestedPassword}}</h3>
+    </md-card-content>
+    <div class="md-actions" layout="row" layout-align="end center">
+      <md-button ng-click="loginCard.changePassword()">Cambiar Contrase&ntilde;a</md-button>
+      <md-button ng-click="loginCard.login()" class="md-primary" ng-disabled="loginCard.loading">Continuar</md-button>
+    </div>
+  </md-card>
+
+  <md-card ng-show="loginCard.view5">
+    <md-card-content>
+      <h2 class="md-title">Cambiar Contrase&ntilde;a</h2>
+      <br>
+      <form ng-submit="loginCard.savePassword()">
+        <md-input-container>
+          <label>Contrase&ntilde;a</label>
+          <input type="password" ng-model="loginCard.newPassword">
+        </md-input-container>
+        <md-input-container>
+          <label>Repetir Contrase&ntilde;a</label>
+          <input type="password" ng-model="loginCard.repeatPassword">
+        </md-input-container>
+        <span ng-show="loginCard.passwordMatchError" class="md-caption" style="color:#F44336
+">* Las contrase&ntilde;as son diferentes.</span>
+        <br>
+        <span ng-show="loginCard.passwordLengthError" class="md-caption" style="color:#F44336
+">* La contrase&ntilde;a debe tener m&iacute;nimo 6 caracteres.</span>
+        <br>
+        <span ng-show="loginCard.passwordNoSaveError" class="md-caption" style="color:#F44336
+">* La contrase&ntilde;a no pudo ser guardada.</span>
+      </form>
+    </md-card-content>
+    <div class="md-actions" layout="row" layout-align="end center">
+      <md-button ng-click="loginCard.dismiss()" ng-hide="loginCard.enabled">Cerrar</md-button>
+      <md-button ng-click="loginCard.proceed()" ng-show="loginCard.enabled">Volver</md-button>
+      <md-button ng-click="loginCard.savePassword()" class="md-primary" ng-disabled="loginCard.loading">Continuar</md-button>
+    </div>
+  </md-card>
+</section>

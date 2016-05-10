@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["app-module.js"],"sourcesContent":["(function () {\n  'use strict';\n\n  /* @ngdoc object\n   * @name amigoSecreto\n   * @description\n   *\n   */\n  angular\n    .module('amigoSecreto', [\n      'ngMaterial',\n      'ui.router',\n      'home'\n    ]);\n}());\n"],"file":"app-module.js","sourceRoot":"/source/"}

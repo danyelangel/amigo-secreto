@@ -1,0 +1,10 @@
+<section>
+  <md-subheader layout-fill layout="row" layout-align="space-between center">
+    <span flex>Todos los participantes</span>
+    <md-button ng-hide="allPlayers.enabled" ng-click="allPlayers.enable()">Ver participantes</md-button>
+    <md-button ng-show="allPlayers.enabled" ng-click="allPlayers.disable()">Ocultar</md-button>
+  </md-subheader>
+  <div ng-repeat="user in allPlayers.users" ng-show="allPlayers.enabled">
+    <profile-view name="user.name" ng-show="user.isRegistered"></profile-view>
+  </div>
+</section>

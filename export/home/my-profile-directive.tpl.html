@@ -1,0 +1,22 @@
+<section ng-show="myProfile.loggedIn">
+  <md-subheader class="md-primary" layout-fill>Mis deseos</md-subheader>
+  <md-card>
+<!--    <img src="http://s9.postimg.org/t1z3nwyz3/11002588_10153134616086727_5700493923744106471_n.jpg" class="md-card-image">-->
+    <md-card-content>
+      <h2 class="md-title">{{myProfile.name}}<span ng-show="myProfile.changed">*</span></h2>
+      <br ng-show="myProfile.changed">
+      <md-input-container ng-show="myProfile.changed">
+        <label>Deseos</label>
+        <textarea ng-change="myProfile.onChange()" ng-model="myProfile.wishes" columns="1" md-maxlength="500"></textarea>
+      </md-input-container>
+      <p ng-hide="myProfile.changed">{{myProfile.wishes}}</p>
+    </md-card-content>
+    <div class="md-actions" layout="row" layout-align="end center" ng-show="myProfile.changed">
+      <md-button ng-click="myProfile.cancel()">Cancelar</md-button>
+      <md-button class="md-primary" ng-click="myProfile.save()">Guardar</md-button>
+    </div>
+    <div class="md-actions" layout="row" layout-align="end center" ng-hide="myProfile.changed">
+      <md-button class="md-primary" ng-click="myProfile.edit()">Editar</md-button>
+    </div>
+  </md-card>
+</section>
